@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
 import { Button, message, Steps, theme } from 'antd';
+import StepFormOne from './StepFormOne'
+import StepFormTwo from './StepFormTwo'
+import StepFormThree from './StepFormThree';
+// import PreviewCV from './PreviewCV';
+import {Form} from 'antd';
+
 const steps = [
   {
-    title: 'First',
-    content: 'First-content',
+    title: 'Profile',
+    content: <StepFormOne />,
   },
   {
-    title: 'Second',
-    content: 'Second-content',
+    title: 'Technical Skills',
+    content: <StepFormTwo />,
   },
   {
-    title: 'Last',
-    content: 'Last-content',
+    title: 'Projects',
+    content: <StepFormThree />,
   },
+  // {
+  //   title: 'Preview',
+  //   content: <PreviewCV />,
+  // },
 ];
+
 const StepperForm = () => {
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
@@ -27,17 +38,17 @@ const StepperForm = () => {
     key: item.title,
     title: item.title,
   }));
+
   const contentStyle = {
     lineHeight: '260px',
     textAlign: 'center',
     color: token.colorTextTertiary,
-    backgroundColor: token.colorFillAlter,
     borderRadius: token.borderRadiusLG,
-    border: `1px dashed ${token.colorBorder}`,
     marginTop: 16,
   };
+
   return (
-    <>
+    <Form layout="vertical">
       <Steps current={current} items={items} />
       <div style={contentStyle}>{steps[current].content}</div>
       <div
@@ -66,7 +77,7 @@ const StepperForm = () => {
           </Button>
         )}
       </div>
-    </>
+    </Form>
   );
 };
 export default StepperForm;

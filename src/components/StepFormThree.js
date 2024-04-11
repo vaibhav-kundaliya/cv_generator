@@ -6,7 +6,7 @@ import TextArea from 'antd/es/input/TextArea';
 export default function StepFormThree() {
   return (
     <>
-    <Form.List name="items">
+    <Form.List name="projects">
         {(fields, { add, remove }) => (
             <div
                 style={{

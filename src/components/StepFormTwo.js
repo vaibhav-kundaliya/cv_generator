@@ -5,7 +5,7 @@ import { Button, Card, Form, Input, Space, Flex  } from 'antd';
 export default function StepFormTwo() {
     return (
         <>
-            <Form.List name="items">
+            <Form.List name="technical_skills">
                 {(fields, { add, remove }) => (
                     <div
                         style={{

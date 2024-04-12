@@ -1,23 +1,12 @@
 import React, { useState } from "react";
-import { Button, message, Steps, theme, Form, F } from "antd";
+import { Button, message, Steps, theme, Form, } from "antd";
 import StepFormOne from "./StepFormOne";
-import StepFormTwo from "./StepFormTwo";
-import { useMediaQuery } from "react-responsive";
-import StepFormThree from "./StepFormThree";
 import Wrapper_PreviewCV from "./Wrapper_PreviewCV";
 
 const steps = [
     {
         title: "Profile",
         content: <StepFormOne />,
-    },
-    {
-        title: "Skills",
-        content: <StepFormTwo />,
-    },
-    {
-        title: "Projects",
-        content: <StepFormThree />,
     },
     {
         title: "Preview",
@@ -57,7 +46,6 @@ const StepperForm = () => {
 
     return (
         <>
-            <Steps current={current} items={items} />
             <Form layout="vertical" form={form}>
                 <div style={contentStyle}>{steps[current].content}</div>
                 <div

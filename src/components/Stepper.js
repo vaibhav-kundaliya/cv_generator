@@ -39,6 +39,10 @@ const StepperForm = () => {
     const prev = () => {
         setCurrent(current - 1);
     };
+    const flushDOM = () => {
+        form.resetFields()  
+        setCurrent(0);
+    }
     const items = steps.map((item) => ({
         key: item.title,
         title: item.title,
@@ -72,7 +76,7 @@ const StepperForm = () => {
                         </Button>
                     )}
                     {current === steps.length - 1 && (
-                        <Button type="primary">
+                        <Button type="primary" onClick={flushDOM}>
                             Done
                         </Button>
                     )}

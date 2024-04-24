@@ -6,43 +6,32 @@ import { useMediaQuery } from "react-responsive";
 import StepFormThree from "./StepFormThree";
 import Wrapper_PreviewCV from "./Wrapper_PreviewCV";
 
-const steps = [
-    {
-        title: "Profile",
-        content: <StepFormOne />,
-    },
-    {
-        title: "Skills",
-        content: <StepFormTwo />,
-    },
-    {
-        title: "Projects",
-        content: <StepFormThree />,
-    },
-    {
-        title: "Preview",
-        content: <Wrapper_PreviewCV />,
-    },
-];
-
 const StepperForm = () => {
     const [form] = Form.useForm();
+    const [sections, setSection] = useState([]);
     const { token } = theme.useToken();
     const [current, setCurrent] = useState(0);
+    const steps = [
+        {
+            title: "Profile",
+            content: <StepFormOne setSection={setSection} sections={sections} />,
+        },
+        {
+            title: "Preview",
+            content: <Wrapper_PreviewCV form={form} sections={sections} />,
+        },
+    ];
+
     const next = () => {
+        console.log(form.getFieldsValue())
         setCurrent(current + 1);
-        localStorage.setItem(
-            "devProfile",
-            JSON.stringify(form.getFieldValue())
-        );
     };
     const prev = () => {
         setCurrent(current - 1);
     };
     const flushDOM = () => {
-        form.resetFields()  
         setCurrent(0);
-    }
+    };
     const items = steps.map((item) => ({
         key: item.title,
         title: item.title,
@@ -76,7 +65,7 @@ const StepperForm = () => {
                         </Button>
                     )}
                     {current === steps.length - 1 && (
-                        <Button type="primary" onClick={flushDOM}>
+                        <Button type="primary" >
                             Done
                         </Button>
                     )}

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "grabzit": "^3.5.3",
+    "html-pdf": "^3.0.1"
+  }
+}
